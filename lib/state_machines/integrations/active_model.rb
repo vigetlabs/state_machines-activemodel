@@ -405,6 +405,7 @@ module StateMachines
       def define_state_initializer
         define_helper :instance, <<-end_eval, __FILE__, __LINE__ + 1
           def initialize(params = {})
+            params ||= {}
             self.class.state_machines.initialize_states(self, {}, params) { super }
           end
         end_eval
